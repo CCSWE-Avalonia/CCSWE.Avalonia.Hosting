@@ -1,0 +1,5 @@
+root = true
+
+# Apply to all XAML/Axaml files
+[*.{axaml,xaml}]
+resharper_xaml_style_class_not_found_highlighting = none

@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="CCSWE.Avalonia.Hosting.Sample.MainWindow"
+        Width="520" Height="320"
+        Title="CCSWE.Avalonia.Hosting sample"
+        WindowStartupLocation="CenterScreen">
+
+    <StackPanel Margin="32" Spacing="12" VerticalAlignment="Center">
+        <TextBlock Text="CCSWE.Avalonia.Hosting" Classes="HeadlineSmall"/>
+        <TextBlock Classes="BodyMedium" TextWrapping="Wrap"
+                   Text="Bootstrapped via DesktopApplication.CreateBuilder&lt;App&gt;(args).Build().Run(args). The .NET Generic Host owns DI and the hosted-service lifecycle; the library runs the Avalonia classic-desktop lifetime."/>
+    </StackPanel>
+
+</Window>

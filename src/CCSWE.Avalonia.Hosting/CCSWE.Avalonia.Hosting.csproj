@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Description>The lifetime-agnostic contract for bootstrapping Avalonia apps on the .NET Generic Host: IServiceProviderAccessor, the seam an Avalonia Application implements to receive the host's IServiceProvider. For desktop apps, use CCSWE.Avalonia.Hosting.Desktop.</Description>
+    <PackageTags>avalonia;hosting;generic-host;dependency-injection;mvvm</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>ccswe-logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="ccswe-logo.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>

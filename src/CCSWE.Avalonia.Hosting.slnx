@@ -1,0 +1,31 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path="../CLAUDE.md" />
+    <File Path="../LICENSE.md" />
+    <File Path="../README.md" />
+    <File Path="../SECURITY.md" />
+    <File Path="../docs/samples/Program.sample.cs" />
+  </Folder>
+  <Folder Name="/eng/">
+    <File Path="../.editorconfig" />
+    <File Path="../.gitattributes" />
+    <File Path="../.gitignore" />
+    <File Path="../global.json" />
+    <File Path="../version.json" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/eng/GitHub Actions/">
+    <File Path="../.github/workflows/dotnet-build-publish-library.yml" />
+    <File Path="../.github/workflows/codeql.yml" />
+    <File Path="../.github/dependabot.yml" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="CCSWE.Avalonia.Hosting/CCSWE.Avalonia.Hosting.csproj" />
+    <Project Path="CCSWE.Avalonia.Hosting.Desktop/CCSWE.Avalonia.Hosting.Desktop.csproj" />
+    <Project Path="CCSWE.Avalonia.Hosting.Sample/CCSWE.Avalonia.Hosting.Sample.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="CCSWE.Avalonia.Hosting.Desktop.UnitTests/CCSWE.Avalonia.Hosting.Desktop.UnitTests.csproj" />
+  </Folder>
+</Solution>

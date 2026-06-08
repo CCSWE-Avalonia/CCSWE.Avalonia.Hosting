@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>CCSWE.Avalonia.Hosting</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Description>Bootstrap an Avalonia classic-desktop app (Windows, Linux, macOS) on the .NET Generic Host: DesktopApplication.CreateBuilder&lt;TApp&gt;(args) wires DI, hosted services, configuration and logging, then Build().Run(args) runs the Avalonia main loop with the correct host lifecycle — no Avalonia-to-host boilerplate.</Description>
+    <PackageTags>avalonia;hosting;generic-host;dependency-injection;desktop;mvvm</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>ccswe-logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CCSWE.Avalonia.Hosting\CCSWE.Avalonia.Hosting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="ccswe-logo.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>
