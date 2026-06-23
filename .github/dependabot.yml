@@ -1,15 +1,24 @@
 version: 2
 updates:
-  # NuGet - versions are centrally managed in src/Directory.Packages.props (CPM).
+  # NuGet — versions are centrally managed in src/Directory.Packages.props (CPM),
+  # plus the nbgv dotnet tool in /.config/dotnet-tools.json.
   - package-ecosystem: "nuget"
-    directory: "/src"
+    directories:
+      - "/src"
+      - "/.config"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     groups:
-      # Avalonia packages are kept in lockstep - update them together in one PR.
+      # Avalonia packages are kept in lockstep — update them together in one PR.
       avalonia:
         patterns:
+          - "Avalonia*"
+      # Everything else lands in a single grouped PR, spanning both directories.
+      nuget:
+        patterns:
+          - "*"
+        exclude-patterns:
           - "Avalonia*"
 
   # GitHub Actions used by the workflows.
@@ -18,3 +27,7 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
+    groups:
+      actions:
+        patterns:
+          - "*"
