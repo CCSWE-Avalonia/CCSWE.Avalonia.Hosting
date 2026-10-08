@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `CCSWE.Avalonia.Hosting` is a small library suite that bootstraps an Avalonia desktop app on the .NET **Generic
 Host** (DI, hosted-service lifecycle, configuration, logging) so an app's `Program.Main` is just *create a
-builder, register services, build, run*. See `README.md` for usage. Targets `net10.0` / Avalonia 12.
+builder, register services, build, run*. See `README.md` for usage. Target framework: `src/Directory.Build.props`; Avalonia: `src/Directory.Packages.props`.
 
 ## Architecture — two packages on one namespace
 
@@ -31,7 +31,7 @@ differ fundamentally (the OS owns the loop), so they are **not** generalized int
 `OnFrameworkInitializationCompleted`, so the provider is set in time. `Run()` is one-shot (Interlocked guard);
 advanced lifetime coordination uses `app.Host`. The previewer entry point is `DesktopApplication.ConfigureAppBuilder<TApp>()`
 (no host). Dev-tools (`WithDeveloperTools()`) stay in the **consuming app's** `#if DEBUG ConfigureAppBuilder(...)` —
-the library must not reference `Avalonia.Diagnostics`.
+the library must not reference `AvaloniaUI.DiagnosticsSupport`.
 
 ## Build / pack / publish
 
@@ -49,8 +49,8 @@ NuGet.org on `master`.
 ## Coding standards
 
 Standard C# conventions: 4-space indent, Allman braces, explicit access modifiers, file-scoped namespaces,
-`using`s outside the namespace (System first, then third-party, then project). `LangVersion=default`,
-`ImplicitUsings`/`Nullable` enabled solution-wide. `[PublicAPI]` (JetBrains.Annotations) on the public surface;
+`using`s outside the namespace (System first, then third-party, then project). `LangVersion`,
+`ImplicitUsings` and `Nullable` are set solution-wide in `src/Directory.Build.props`. `[PublicAPI]` (JetBrains.Annotations) on the public surface;
 `GenerateDocumentationFile` is on, so document public/internal members (use `<inheritdoc />` for interface
 implementations where the base doc suffices). `[ExcludeFromCodeCoverage]` on composition-only/log-only types.
 
@@ -70,7 +70,7 @@ implementations where the base doc suffices). `[ExcludeFromCodeCoverage]` on com
 
 ## Testing
 
-NUnit 4, Moq for mocking (mock `ILogger` with a logger fake rather than raw setups).
+NUnit, Moq for mocking (mock `ILogger` with a logger fake rather than raw setups).
 `<ClassUnderTest>Tests` (not sealed, `[SuppressMessage("ReSharper", "InconsistentNaming")]`) with nested
 `When_<Method>_Is_Called` classes inheriting the outer and `It_<behavior>` methods; AAA with blank-line separation
 (no `// Arrange` comments). Test projects sit **physically under `src/`**
