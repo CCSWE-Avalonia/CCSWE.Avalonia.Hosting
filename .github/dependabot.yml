@@ -1,33 +1,35 @@
 version: 2
 updates:
-  # NuGet — versions are centrally managed in src/Directory.Packages.props (CPM),
-  # plus the nbgv dotnet tool in /.config/dotnet-tools.json.
-  - package-ecosystem: "nuget"
+  - package-ecosystem: nuget
     directories:
-      - "/src"
-      - "/.config"
+      - /src
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Boise
+    cooldown:
+      default-days: 3
+      exclude:
+        - "CCSWE.*"
     groups:
-      # Avalonia packages are kept in lockstep — update them together in one PR.
-      avalonia:
-        patterns:
-          - "Avalonia*"
-      # Everything else lands in a single grouped PR, spanning both directories.
-      nuget:
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "Avalonia*"
+      nuget-minor-patch:
+        update-types: [minor, patch]
+      nuget-major:
+        update-types: [major]
 
-  # GitHub Actions used by the workflows.
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directories:
+      - /
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Boise
+    cooldown:
+      default-days: 3
     groups:
-      actions:
-        patterns:
-          - "*"
+      actions-minor-patch:
+        update-types: [minor, patch]
+      actions-major:
+        update-types: [major]
