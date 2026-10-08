@@ -36,8 +36,8 @@ public sealed class DesktopApplicationBuilder
     /// <summary>The underlying host builder, for advanced scenarios (service-provider factory, options, metrics).</summary>
     public IHostApplicationBuilder Host => _hostBuilder;
 
-    /// <summary>The host's logging builder. Providers are cleared by default (a GUI process has no console);
-    /// call <c>Logging.AddXxx()</c> to opt back in.</summary>
+    /// <summary>The host's logging builder. Providers are cleared when
+    /// <see cref="DesktopApplicationOptions.ClearLoggingProviders"/> is set; call <c>Logging.AddXxx()</c> to opt back in.</summary>
     public ILoggingBuilder Logging => _hostBuilder.Logging;
 
     /// <summary>The application's service collection. Register dependency injection here.</summary>
